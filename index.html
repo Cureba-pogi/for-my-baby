@@ -1,262 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Baby princess</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    
-    .container {
-      position: relative;
-      text-align: center;
-    }
-    
-    .bouquet {
-      position: relative;
-      width: 350px;
-      height: 450px;
-      margin: 0 auto;
-    }
-    
-    .flower {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      animation: float 5s ease-in-out infinite;
-      transform-origin: center bottom;
-    }
-    
-    .petals {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      animation: rotate 15s linear infinite;
-    }
-    
-    .petal {
-      position: absolute;
-      width: 20px;
-      height: 30px;
-      border-radius: 50% 50% 0 50%;
-      transform-origin: center bottom;
-    }
-    
-    .center {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #FFD700;
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-    .stem {
-      position: absolute;
-      background: linear-gradient(to bottom, #2E8B57, #3CB371);
-      width: 5px;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: -1;
-    }
-    
-    .leaf {
-      position: absolute;
-      width: 25px;
-      height: 15px;
-      background: #3CB371;
-      border-radius: 50% 50% 50% 0;
-      bottom: 30%;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-    }
-    
-    .message-container {
-      margin-top: 40px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    .message {
-      color: #D81B60;
-      font-size: 24px;
-      font-weight: bold;
-      opacity: 0;
-      animation: fadeIn 2s forwards 3s;
-    }
-    
-    .hearts {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-    
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      color: #FF69B4;
-      animation: float-up 4s ease-out forwards;
-      opacity: 0;
-    }
-    
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-15px) rotate(2deg);
-      }
-    }
-    
-    @keyframes rotate {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-    
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-    
-    @keyframes float-up {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px);
-        opacity: 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .love-letter {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: fadeIn 1.5s forwards 0.5s;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        @keyframes fadeIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #e91e63;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+        }
+
+        p {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            font-weight: bold;
+            color: #e91e63;
+            margin-top: 30px;
+            font-size: 1.3em;
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+            font-size: 24px;
+            color: #ff4081;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #e91e63;
+            font-size: 14px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="bouquet" id="bouquet"></div>
-    <div class="message-container">
-      <div class="message" id="message">Happy Girlfriend's Day! Baby princess You make my world beautiful.</div>
-    </div>
-    <div class="hearts" id="hearts"></div>
-  </div>
-
-  <script>
-    const bouquet = document.getElementById('bouquet');
-    const messageEl = document.getElementById('message');
-    const heartsContainer = document.getElementById('hearts');
-    const petalColors = ['#FF69B4', '#FF1493', '#FFC0CB', '#FF6347', '#FFA500', '#FFD700'];
-    const messages = [
-      "apaka gandaaaa mo pooo bebe kooo",
-      "dimawawala pagmamahal kopo sayuu bebe koo",
-      "i loveeeeeee youuuuuuu sooooooo mucchhhhh bebeee princess ko",
-      "ikaw lagi laman ng pusoo kooo bebe kooo",
-      "ang bait mopoo tas maintindihin kapapo ",
-      "dont worry bebe kooo dikita iiwan love love kitaaa ih",
-      "i misssssss youuuuu sooo muchhh poooo bebe kooo"
-    ];
+    <div class="hearts-container" id="hearts"></div>
     
-    function createFlower(x, y, size, delay) {
-      const flower = document.createElement('div');
-      flower.className = 'flower';
-      flower.style.left = `${x}px`;
-      flower.style.bottom = `${y}px`;
-      flower.style.width = `${size}px`;
-      flower.style.height = `${size}px`;
-      flower.style.animationDelay = `${delay}s`;
-      
-      const petals = document.createElement('div');
-      petals.className = 'petals';
-      
-      // Create petals (8 per flower)
-      for (let i = 0; i < 8; i++) {
-        const petal = document.createElement('div');
-        petal.className = 'petal';
-        petal.style.transform = `rotate(${i * 45}deg) translateX(15px)`;
-        petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
-        petals.appendChild(petal);
-      }
-      
-      const center = document.createElement('div');
-      center.className = 'center';
-      
-      const stem = document.createElement('div');
-      stem.className = 'stem';
-      stem.style.height = `${y}px`;
-      
-      const leaf = document.createElement('div');
-      leaf.className = 'leaf';
-      
-      flower.appendChild(petals);
-      flower.appendChild(center);
-      flower.appendChild(stem);
-      flower.appendChild(leaf);
-      bouquet.appendChild(flower);
-      
-      // Add hover effect
-      flower.addEventListener('mouseover', () => {
-        createHearts(flower);
-        showRandomMessage();
-      });
-    }
-    
-    function createHearts(element) {
-      const rect = element.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-      
-      for (let i = 0; i < 5; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '❤️';
-        heart.style.left = `${x + Math.random() * 30 - 15}px`;
-        heart.style.top = `${y + Math.random() * 30 - 15}px`;
-        heart.style.animationDelay = `${i * 0.2}s`;
-        heartsContainer.appendChild(heart);
+    <div class="love-letter">
+        <h1>Happy Girlfriend's Day, My Babyy Princess ❤️</h1>
         
-        setTimeout(() => {
-          heart.remove();
-        }, 4000);
-      }
-    }
-    
-    function showRandomMessage() {
-      const randomIndex = Math.floor(Math.random() * messages.length);
-      messageEl.style.animation = 'none';
-      messageEl.offsetHeight; // Trigger reflow
-      messageEl.style.animation = 'fadeIn 1s forwards';
-      messageEl.textContent = messages[randomIndex];
-    }
-    
-    // Create flowers
-    for (let i = 0; i < 12; i++) {
-      const x = Math.random() * 300 + 25;
-      const y = Math.random() * 150 + 100;
-      const size = Math.random() * 20 + 40;
-      const delay = Math.random() * 3;
-      createFlower(x, y, size, delay);
-    }
-    
-    // Change message periodically
-    setInterval(showRandomMessage, 5000);
-  </script>
+        <p>My Dearest,</p>
+        
+        <p>thankkkk youuu sooo muchhh bebe kooo dahil sayoooo nag bagooo akooo at naniwala ulet ako sa lovee kaya todo ako protect sayu kasiii mahall na mahalll kitaaa ikaw nag pakita sakin ng true loveee kayaa superrr thankkk full akoo dahil dumating ka sa buhay ko.</p>
+        
+        <p> bebe alam moo baaa superrr proud akooo sayooo kasiii ung mga diko magawa nagagawa mooo tas bussness minded kapaa kaya proud na proud akooo sayuuu bebe koooo ihh mwaaaaaaaamwaaaaaaa bebe koooo.</p>
+
+        <p>and bebe i missss youuuu sooo muchhh napoooo superrr misss na misss na kitaaa kaya kung may wish ako sana makasama kita ng habang buhayyy ung walang magulo sa paligid and tahimik tas tayo lang mag iingay anggg sarappp non pag kasama kitaaa tas ikakasal us.</p>
+            
+        <p>tas pag kasal na tayooo mag bobonding uss araw araw at maglilibobt sa buong mundo ng tayo langgg hehe i loveeeeeee youuuuuu soooooo muchhhhh bebeeee princess kooooo mwaaaaaaaaamwaaaaaaa bebeee koooo.</p>
+
+        <p>and for last bebe kooo thankkk youuu sooo muchhh for being there in my side always mokoooo tinutulungan bebe ko and sorry dahil na fefeel mo nalagi kita sinisigawan but dipoo kita sinisigawan bebe koo sorry din poo dahil lagi ako may nagagawang nakakasama ng loob mopo but in futureee bebe lahat ng pangarap mo matutupad naten lalo na ung malakad ka sa altar hihi.</p>
+
+        <p>Forever yours,</p>
+        <div class="signature">With all my love ❤️</div>
+        <div class="scroll-indicator">Scroll down to read more</div>
+    </div>
+
+    <script>
+        const heartsContainer = document.getElementById('hearts');
+        const colors = ['#ff4081', '#e91e63', '#f50057', '#ff80ab', '#ff5252'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+        
+        // Initial burst of hearts
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createHeart, i * 100);
+        }
+        
+        // Continuous heart flow
+        setInterval(createHeart, 500);
+        
+        // Hearts on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.7) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+        });
+    </script>
 </body>
 </html>
