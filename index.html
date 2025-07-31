@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Baby princess</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .container {
+      position: relative;
+      text-align: center;
+    }
+    
+    .bouquet {
+      position: relative;
+      width: 350px;
+      height: 450px;
+      margin: 0 auto;
+    }
+    
+    .flower {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      animation: float 5s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    
+    .petals {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: rotate 15s linear infinite;
+    }
+    
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      border-radius: 50% 50% 0 50%;
+      transform-origin: center bottom;
+    }
+    
+    .center {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #FFD700;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .stem {
+      position: absolute;
+      background: linear-gradient(to bottom, #2E8B57, #3CB371);
+      width: 5px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+    
+    .leaf {
+      position: absolute;
+      width: 25px;
+      height: 15px;
+      background: #3CB371;
+      border-radius: 50% 50% 50% 0;
+      bottom: 30%;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+    
+    .message-container {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .message {
+      color: #D81B60;
+      font-size: 24px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 2s forwards 3s;
+    }
+    
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: #FF69B4;
+      animation: float-up 4s ease-out forwards;
+      opacity: 0;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-15px) rotate(2deg);
+      }
+    }
+    
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes float-up {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="bouquet" id="bouquet"></div>
+    <div class="message-container">
+      <div class="message" id="message">Happy Girlfriend's Day! Baby princess You make my world beautiful.</div>
+    </div>
+    <div class="hearts" id="hearts"></div>
+  </div>
+
+  <script>
+    const bouquet = document.getElementById('bouquet');
+    const messageEl = document.getElementById('message');
+    const heartsContainer = document.getElementById('hearts');
+    const petalColors = ['#FF69B4', '#FF1493', '#FFC0CB', '#FF6347', '#FFA500', '#FFD700'];
+    const messages = [
+      "apaka gandaaaa mo pooo bebe kooo",
+      "dimawawala pagmamahal kopo sayuu bebe koo",
+      "i loveeeeeee youuuuuuu sooooooo mucchhhhh bebeee princess ko",
+      "ikaw lagi laman ng pusoo kooo bebe kooo",
+      "ang bait mopoo tas maintindihin kapapo ",
+      "dont worry bebe kooo dikita iiwan love love kitaaa ih",
+      "i misssssss youuuuu sooo muchhh poooo bebe kooo"
+    ];
+    
+    function createFlower(x, y, size, delay) {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.style.left = `${x}px`;
+      flower.style.bottom = `${y}px`;
+      flower.style.width = `${size}px`;
+      flower.style.height = `${size}px`;
+      flower.style.animationDelay = `${delay}s`;
+      
+      const petals = document.createElement('div');
+      petals.className = 'petals';
+      
+      // Create petals (8 per flower)
+      for (let i = 0; i < 8; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.style.transform = `rotate(${i * 45}deg) translateX(15px)`;
+        petal.style.background = petalColors[Math.floor(Math.random() * petalColors.length)];
+        petals.appendChild(petal);
+      }
+      
+      const center = document.createElement('div');
+      center.className = 'center';
+      
+      const stem = document.createElement('div');
+      stem.className = 'stem';
+      stem.style.height = `${y}px`;
+      
+      const leaf = document.createElement('div');
+      leaf.className = 'leaf';
+      
+      flower.appendChild(petals);
+      flower.appendChild(center);
+      flower.appendChild(stem);
+      flower.appendChild(leaf);
+      bouquet.appendChild(flower);
+      
+      // Add hover effect
+      flower.addEventListener('mouseover', () => {
+        createHearts(flower);
+        showRandomMessage();
+      });
+    }
+    
+    function createHearts(element) {
+      const rect = element.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      
+      for (let i = 0; i < 5; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = `${x + Math.random() * 30 - 15}px`;
+        heart.style.top = `${y + Math.random() * 30 - 15}px`;
+        heart.style.animationDelay = `${i * 0.2}s`;
+        heartsContainer.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+    }
+    
+    function showRandomMessage() {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      messageEl.style.animation = 'none';
+      messageEl.offsetHeight; // Trigger reflow
+      messageEl.style.animation = 'fadeIn 1s forwards';
+      messageEl.textContent = messages[randomIndex];
+    }
+    
+    // Create flowers
+    for (let i = 0; i < 12; i++) {
+      const x = Math.random() * 300 + 25;
+      const y = Math.random() * 150 + 100;
+      const size = Math.random() * 20 + 40;
+      const delay = Math.random() * 3;
+      createFlower(x, y, size, delay);
+    }
+    
+    // Change message periodically
+    setInterval(showRandomMessage, 5000);
+  </script>
+</body>
+</html>
