@@ -234,7 +234,7 @@
     
     <div class="photo-frame">
       <div class="photo"><img src="https://i.ibb.co/1pW89hv/Messenger-creation-0749-CFCD-A7-C0-456-F-884-F-3-BE1-D375-E5-F7.jpg" alt="Messenger-creation-0749-CFCD-A7-C0-456-F-884-F-3-BE1-D375-E5-F7" style="width:100%;height:100%;object-fit:cover;"></div>
-      <!-- Replace with: <img src="your-photo.jpg" style="width:100%;height:100%;object-fit:cover;"> -->
+  
     </div>
     
     <div class="song-info">"<span class="artist">Arctic Monkeys</span>" playing in the background</div>
@@ -270,14 +270,13 @@
   </div>
 
   <audio id="bgMusic" loop>
-    <!-- Replace with your Cigarettes After Sex audio file -->
     <source src="c:\Users\Acer\Downloads\audio.no-1.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
-    // Set months together
-    const monthsTogether = 6; // Change to your actual months
+  
+    const monthsTogether = 6;
     const counters = document.querySelectorAll('.months-counter');
     const plural = document.getElementById('plural');
     
@@ -289,7 +288,7 @@
       plural.textContent = '';
     }
 
-    // Create floating elements
+    
     const flowers = ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷'];
     const hearts = ['❤️', '💗', '💘', '💝', '💖', '💓'];
     
@@ -319,15 +318,15 @@
       }, 30000);
     }
     
-    // Create initial floating elements
+    
     for (let i = 0; i < 20; i++) {
       setTimeout(createFloatingElement, i * 500);
     }
     
-    // Continue creating elements
+    
     setInterval(createFloatingElement, 1000);
     
-    // Music controls
+    
     const musicBtn = document.getElementById('musicBtn');
     const bgMusic = document.getElementById('bgMusic');
     let musicPlaying = false;
@@ -343,7 +342,7 @@
       musicPlaying = !musicPlaying;
     });
     
-    // Auto-play music after user interaction
+    
     document.addEventListener('click', function initAudio() {
       bgMusic.volume = 0.6;
       bgMusic.play().then(() => {
