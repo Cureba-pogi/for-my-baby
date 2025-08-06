@@ -3,356 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Monthsary</title>
+  <title>Happy Monthsary!</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap');
-    
-    :root {
-      --primary: #2c3e50;
-      --secondary: #bdc3c7;
-      --accent: #e74c3c;
-    }
-    
     body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
-      font-family: 'Montserrat', sans-serif;
       overflow: hidden;
-      min-height: 100vh;
+      background: linear-gradient(to bottom, #ffcce6, #ff99cc);
+      font-family: 'Arial', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      height: 100vh;
+      color: #fff;
     }
-
+    
     .container {
+      text-align: center;
       position: relative;
       z-index: 10;
-      width: 90%;
+      padding: 20px;
       max-width: 600px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(8px);
-      transform: scale(0.95);
-      opacity: 0;
-      animation: fadeIn 1.5s forwards 0.5s;
-      border: 1px solid rgba(255,255,255,0.1);
     }
-
-    @keyframes fadeIn {
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
+    
     h1 {
-      font-family: 'Playfair Display', serif;
-      color: white;
-      font-size: 3rem;
-      margin-bottom: 10px;
-      text-align: center;
-      letter-spacing: 1px;
-    }
-
-    .months-counter {
       font-size: 2.5rem;
-      color: var(--accent);
-      display: inline-block;
-      min-width: 30px;
-      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
     }
-
-    .photo-frame {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      margin: 20px auto;
-      overflow: hidden;
-      border: 4px solid rgba(255,255,255,0.2);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      position: relative;
-      opacity: 0;
-      animation: fadeIn 1s forwards 1s;
+    
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
-
-    .photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: #fc03a9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 3rem;
-      color: white;
-    }
-
-    .message {
-      line-height: 1.8;
-      font-size: 1.1rem;
-      margin: 30px 0;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideUp 1s forwards 1.5s;
-      text-align: center;
-      color: rgba(255,255,255,0.9);
-    }
-
-    @keyframes slideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .song-info {
-      text-align: center;
-      font-style: italic;
-      margin-bottom: 25px;
-      opacity: 0;
-      animation: fadeIn 1s forwards 2s;
-      color: var(--secondary);
-    }
-
-    .artist {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .signature {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      margin-top: 30px;
-      opacity: 0;
-      animation: fadeIn 1s forwards 2.5s;
-    }
-
-    .heart {
-      color: var(--accent);
-      display: inline-block;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-      100% { transform: scale(1); }
-    }
-
-    /* Floating Elements */
-    .floating-element {
+    
+    .heart, .flower {
       position: absolute;
       pointer-events: none;
-      z-index: 1;
-      animation: float linear infinite;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      animation: float 6s ease-in-out infinite;
     }
-
-    .flower-element {
-      font-size: 28px;
-      animation-duration: 20s;
-    }
-
-    .heart-element {
+    
+    .heart {
+      color: #ff3366;
       font-size: 24px;
-      animation-duration: 15s;
-      color: var(--accent);
     }
-
+    
+    .flower {
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    
     @keyframes float {
-      0% {
-        transform: translateY(110vh) rotate(0deg) scale(0.8);
-        opacity: 0;
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
       }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) rotate(360deg) scale(1.2);
-        opacity: 0;
+      50% {
+        transform: translateY(-20px) rotate(10deg);
       }
     }
-
-    /* Music Controls */
-    .music-controls {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 12px 18px;
-      border-radius: 30px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      opacity: 0;
-      animation: fadeIn 1s forwards 3s;
-      transition: all 0.3s;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .music-btn {
-      background: var(--accent);
-      color: white;
-      border: none;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .song-info-panel {
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-
-    .now-playing {
-      font-weight: 600;
-      color: var(--accent);
-      font-size: 0.8rem;
-      margin-bottom: 2px;
+    
+    .signature {
+      font-style: italic;
+      margin-top: 30px;
+      font-size: 1.3rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Happy <span class="months-counter">1</span> Month<span id="plural">s</span>ary</h1>
-    
-    <div class="photo-frame">
-      <div class="photo"><img src="https://i.ibb.co/1pW89hv/Messenger-creation-0749-CFCD-A7-C0-456-F-884-F-3-BE1-D375-E5-F7.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
-  
-    </div>
-    
-    <div class="song-info">"<span class="artist">Arctic Monkeys</span>" playing in the background</div>
-    
-    <div class="message">
-      <p>My madamm babyyy princess</p>
-      
-      <p>helloooo poooo bebe kooo thankkkk youuuu pooo for supporting meee and helping meee pooo for the past <span class="months-counter">6</span> month(s). and thankkkk youuu den pooo sa pag intindii poo sakinn bebe koo</p>
-      
-      <p>and sorryyy pooo bebe kooo sa mga nagawa kopooo sayuu bebe kooo and thankkkk youuu pooo dahil inigyan mopo ako ng chance na baguhin ko po ang sarili ko poo i promiseee pooo na magiging matured napooo akoo and dina pooo mee magiging selfish pooo n dati na inintindi ko lang poo ung sarili kong feelings kopooo now ill be more matured napooo and sorryyy for all idid to you bebe koo mahallll n mahall pooo kita bebe kooo
+    <h1>Happy Monthsary, My madammm babyyyy princesss! ❤️</h1>
+    <p>helloooo poooo bebe kooo thankkkk youuuu pooo for supporting meee and helping meee pooo for the past <span class="months-counter">6</span> month(s). and thankkkk youuu den pooo sa pag intindii poo sakinn bebe koo</p>
+      <p> nd sorryyy pooo bebe kooo sa mga nagawa kopooo sayuu bebe kooo and thankkkk youuu pooo dahil inigyan mopo ako ng chance na baguhin ko po ang sarili ko poo i promiseee pooo na magiging matured napooo akoo and dina pooo mee magiging selfish pooo n dati na inintindi ko lang poo ung sarili kong feelings kopooo now ill be more matured napooo and sorryyy for all idid to you bebe koo mahallll n mahall pooo kita bebe kooo
         thankkk pooo bebeee kooo palagi dahil pag malungkot ako and pag pagod akoo andyan kapoo inaalagaan mopoo akoo and iniintindi mopooo akooo bebe kooo and sanaaaa ikawww napooo magiging asawa kopoo and magiging happy us travel travel langgg walng iniisipp na iba walang problema pooo and sanaa pooo bebe kooo hindi mopoo hanapin ung wala pooo sakin sa ibaa pooo dahil dikopo kakayanin na mawawala kapooo sakin mahalll na mahalll pooo kitaaa bebe kooo:( 
-        promiseeee kopooo bebe na hanggang dulooo ikaw at ikawww lang ang mamahalin ko hanggang kamatayan pooo mahalll naa mahalll pooo kita bebee koooo mwaaaaaaaamwaaaaaa bebe kuuu    
-      </p>
-
-      <p>i missssssss youuuu soooo muchhh napoooo bebe koooo miss kona ung inaalagaan pooo kitaaa ung ako mag dadala ng mga gamit mopoooo dahlll ayoko nahihirapan ang mahalll kooo and miss ko ung kulitan natenn ungg inaasar pooo kitaa miss ko narin pooo na pag nag lalakad us hawak mopoo brasoo koo ung pagiging superr clingy mopoo miss konaaa pooo lahatt pooo miss konaaa kahit dateee poo natenn miss kona pooo bebe kooo gustoo ko tumigil oras ng kasama ka para lahat un magagawa ulet naten ng sobrangg tagalll poo
-        hehe and bebe konting antay lang pooo ahh ilang years nalang pooo mag sasamaa na uss sanaa dikapoo makahanap ng much better saken pooo mahalll na mahalll pooo kitaaa bebe kooo gustooo kona pooo ikaw makasama ng habang buhayy gustoo kona gawin ung mga gusto naten ungg papa babyy mee sayuuu papa babyyy kaa sleep us together poooo i really wanttt thattt tas mag kukulitan us babalibag kitaaa AHAHHAHAHAH jokee lang bebe yoko masaktan bebe koo hehe mahalll na mahalll pooo kitaaa bebe kooo mwaaaaaaaaaaaaaaamwaaaaaaaaa bebe princess kooooo
-        never mawawala pag mamahal kopooo sayuuu never mee mag sasawang intindihin kapooo never meee mawawalan ng ganaaa sauuuu dahilll mahalll na mahall kitaaa bebe kooo and bebe kooo kapag may problem poo ikaw stress poo ikaw sabihin mopooo bebee kooo im hereee alwayss bebe koo im your no.1 fan in everything kahit anoo papooo yannn dahilll mahalll pooo kitaaa bebe kooo mwaaaaaaaaaaaaaaaaaaaaamwaaaaaaaaaaaaaaaaa bebe kuuuu
-
-      </p>
-    </div>
+       </p>
+      
     
-    <div class="signature">
-      Forever yours, <span class="heart">♥</span>
-    </div>
+      
+    
+    
+    
+    <div class="signature">Forever yours, [Your Name]</div>
   </div>
-
-  <div class="music-controls">
-    <button class="music-btn" id="musicBtn">▶</button>
-    <div class="song-info-panel">
-      <div class="now-playing">NOW PLAYING</div>
-      <div>No. 1 Party Anthem</div>
-    </div>
-  </div>
-
-  <audio id="bgMusic" loop>
-    <source src="https://youtu.be/dtr8sYswtKM?si=4mXiEYTXON6R2Bmh" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 
   <script>
-  
-    const monthsTogether = 6;
-    const counters = document.querySelectorAll('.months-counter');
-    const plural = document.getElementById('plural');
-    
-    counters.forEach(counter => {
-      counter.textContent = monthsTogether;
-    });
-    
-    if (monthsTogether === 1) {
-      plural.textContent = '';
-    }
-
-    
-    const flowers = ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷'];
-    const hearts = ['❤️', '💗', '💘', '💝', '💖', '💓'];
-    
-    function createFloatingElement() {
-      const element = document.createElement('div');
-      element.className = 'floating-element';
-      
-      if (Math.random() > 0.5) {
-        element.classList.add('flower-element');
-        element.textContent = flowers[Math.floor(Math.random() * flowers.length)];
-        element.style.animationDuration = `${Math.random() * 18 + 15}s`;
-      } else {
-        element.classList.add('heart-element');
-        element.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        element.style.animationDuration = `${Math.random() * 15 + 12}s`;
-      }
-      
-      element.style.left = `${Math.random() * 100}vw`;
-      element.style.fontSize = `${Math.random() * 28 + 22}px`;
-      element.style.animationDelay = `${Math.random() * 5}s`;
-      element.style.opacity = `${Math.random() * 0.6 + 0.4}`;
-      
-      document.body.appendChild(element);
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
       
       setTimeout(() => {
-        element.remove();
-      }, 30000);
+        heart.remove();
+      }, 6000);
     }
     
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      const flowerTypes = ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷'];
+      flower.innerHTML = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.top = Math.random() * 100 + 'vh';
+      flower.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      flower.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      document.body.appendChild(flower);
+      
+      setTimeout(() => {
+        flower.remove();
+      }, 8000);
+    }
     
+    setInterval(createHeart, 300);
+    setInterval(createFlower, 500);
+    
+    // Initial flowers and hearts
     for (let i = 0; i < 20; i++) {
-      setTimeout(createFloatingElement, i * 500);
+      createHeart();
+      createFlower();
     }
-    
-    
-    setInterval(createFloatingElement, 1000);
-    
-    
-    const musicBtn = document.getElementById('musicBtn');
-    const bgMusic = document.getElementById('bgMusic');
-    let musicPlaying = false;
-    
-    musicBtn.addEventListener('click', () => {
-      if (musicPlaying) {
-        bgMusic.pause();
-        musicBtn.textContent = '▶';
-      } else {
-        bgMusic.play();
-        musicBtn.textContent = '❚❚';
-      }
-      musicPlaying = !musicPlaying;
-    });
-    
-    
-    document.addEventListener('click', function initAudio() {
-      bgMusic.volume = 0.6;
-      bgMusic.play().then(() => {
-        musicPlaying = true;
-        musicBtn.textContent = '❚❚';
-      }).catch(e => {
-        console.log("Audio play failed:", e);
-      });
-      document.removeEventListener('click', initAudio);
-    }, { once: true });
   </script>
 </body>
 </html>
